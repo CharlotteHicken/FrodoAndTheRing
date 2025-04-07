@@ -8,8 +8,8 @@ namespace NodeCanvas.Tasks.Conditions {
 
 	public class DoesFrodoHaveRingCT : ConditionTask {
 
-		public GameObject ring;
-		public GameObject frodo;
+		public BBParameter<GameObject> frodo;
+		public BBParameter<GameObject> ring;
 
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
@@ -30,7 +30,7 @@ namespace NodeCanvas.Tasks.Conditions {
 		//Called once per frame while the condition is active.
 		//Return whether the condition is success or failure.
 		protected override bool OnCheck() {
-			if (ring.transform.parent == frodo.transform)
+			if (ring.value.transform.parent == frodo.value.transform) //if the ring has a parent that is frodo
 			{
                 return true;
             }

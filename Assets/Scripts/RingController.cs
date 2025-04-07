@@ -15,13 +15,15 @@ public class RingController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (transform.parent != null) //kinda disables the rigidbody if it has a parent, so it doesn't roll around
+        if (transform.parent != null) //disables the rigidbody if it has a parent, so it doesn't roll around
         {
             rb.isKinematic = true;
+            rb.detectCollisions = false;
         }
         else
         {
             rb.isKinematic = false;
+            rb.detectCollisions = true;
         }
     }
 }

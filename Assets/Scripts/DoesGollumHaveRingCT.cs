@@ -7,7 +7,7 @@ namespace NodeCanvas.Tasks.Conditions {
 
 	public class DoesGollumHaveRingCT : ConditionTask {
 
-		public GameObject ring;
+		public BBParameter<GameObject> ring;
 
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
@@ -29,7 +29,7 @@ namespace NodeCanvas.Tasks.Conditions {
 		//Return whether the condition is success or failure.
 		protected override bool OnCheck() {
 			
-			if (ring.transform.parent == agent.transform)
+			if (ring.value.transform.parent == agent.transform) //If the current child is the ring, set as true
 			{
                 return true;
             }

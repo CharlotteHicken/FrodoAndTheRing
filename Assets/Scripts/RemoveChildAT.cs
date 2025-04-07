@@ -7,7 +7,7 @@ namespace NodeCanvas.Tasks.Actions {
 
 	public class RemoveChildAT : ActionTask {
 
-		public GameObject ring;
+		public BBParameter<GameObject> ring;
 		//Use for initialization. This is called only once in the lifetime of the task.
 		//Return null if init was successfull. Return an error string otherwise
 		protected override string OnInit() {
@@ -18,7 +18,7 @@ namespace NodeCanvas.Tasks.Actions {
 		//Call EndAction() to mark the action as finished, either in success or failure.
 		//EndAction can be called from anywhere.
 		protected override void OnExecute() {
-			ring.transform.parent = null;
+			ring.value.transform.parent = null; //removes the rings parent so it is dropped by whatever is holding it
 			
 			EndAction(true);
 		}
