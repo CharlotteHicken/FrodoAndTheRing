@@ -11,9 +11,12 @@ public class PlayerController : MonoBehaviour
     public GameObject ring;
     public GameObject gollum;
     public float grabDistance = 2f;
+    public GameObject winScreen;
 
     void Start()
     {
+        winScreen.SetActive(false);
+        ring.SetActive(true);
         rb = GetComponent<Rigidbody>();
     }
 
@@ -62,6 +65,12 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && ring.transform.parent != gollum.transform) //if colliding with an enemy and gollum does not have the ring, drop the ring
         {
             ring.transform.SetParent(null);
+        }
+
+        if (other.gameObject.CompareTag("Lava") && ring.transform.parent == transform)
+        {
+            winScreen.SetActive(true);
+            ring.SetActive(false);
         }
     }
 
